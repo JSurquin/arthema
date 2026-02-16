@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BookOpenIcon } from "lucide-react";
 import { getResources, getPlaylistEmbedUrl, getPlaylistExternalUrl, getEmbedUrl, getVideoUrl } from "@/lib/resources";
 import { VideoPlayer } from "@/components/video-player";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const dynamic = "force-dynamic";
 
@@ -50,6 +51,7 @@ export default async function WatchPage({
               </div>
               <span className="text-xl font-bold tracking-tight">Arthema</span>
             </Link>
+            <ThemeToggle />
           </div>
         </header>
 
@@ -98,6 +100,7 @@ export default async function WatchPage({
             </div>
             <span className="text-xl font-bold tracking-tight">Arthema</span>
           </Link>
+            <ThemeToggle />
         </div>
       </header>
 

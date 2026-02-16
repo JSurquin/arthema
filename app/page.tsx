@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpenIcon, PlayIcon } from "lucide-react";
 import { getResources } from "@/lib/resources";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -34,6 +35,7 @@ export default function Home() {
               </p>
             </div>
           </Link>
+          <ThemeToggle />
         </div>
       </header>
 
