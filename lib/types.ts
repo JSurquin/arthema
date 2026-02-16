@@ -4,12 +4,16 @@ export interface VideoResource {
   duration: string;
 }
 
+/** Playlist soit avec liste de vidéos (videos), soit avec ID playlist YouTube (youtubePlaylistId). */
 export interface PlaylistResource {
   id: string;
   title: string;
   description: string;
   thumbnail: string;
-  videos: VideoResource[];
+  /** Liste locale de vidéos (optionnel). */
+  videos?: VideoResource[];
+  /** ID de la playlist YouTube (ex. PLJaM5P-THN_xxx). Si présent, le lecteur embarque toute la playlist. */
+  youtubePlaylistId?: string;
 }
 
 export interface CategoryResource {

@@ -1,128 +1,121 @@
 {
   "categories": [
     {
-      "id": "javascript",
-      "title": "JavaScript & TypeScript",
-      "description": "Fondamentaux et frameworks JS/TS",
+      "id": "marketing",
+      "title": "Marketing",
+      "description": "Mobile marketing et stratégie digitale.",
       "playlists": [
         {
-          "id": "js-basics",
-          "title": "JavaScript pour débutants",
-          "description": "Apprendre les bases du JavaScript",
-          "thumbnail": "https://img.youtube.com/vi/W6NZfCO5SIk/mqdefault.jpg",
-          "videos": [
-            {
-              "id": "W6NZfCO5SIk",
-              "title": "JavaScript Tutorial for Beginners",
-              "duration": "1:18:00"
-            },
-            {
-              "id": "PkZNo7MFNFg",
-              "title": "Learn JavaScript - Full Course for Beginners",
-              "duration": "3:26:00"
-            },
-            {
-              "id": "hdI2bqOjy3c",
-              "title": "JavaScript Crash Course",
-              "duration": "1:40:00"
-            }
-          ]
-        },
-        {
-          "id": "react-playlist",
-          "title": "React - Le guide complet",
-          "description": "React de A à Z",
-          "thumbnail": "https://img.youtube.com/vi/SqcY0GlETUg/mqdefault.jpg",
-          "videos": [
-            {
-              "id": "SqcY0GlETUg",
-              "title": "React en 100 secondes",
-              "duration": "1:40"
-            },
-            {
-              "id": "Tn6-PIqc4UM",
-              "title": "React - Full Course for Beginners",
-              "duration": "6:23:00"
-            },
-            {
-              "id": "Rh3tobg7hEo",
-              "title": "React Hooks - Comprendre useState et useEffect",
-              "duration": "18:00"
-            }
-          ]
+          "id": "mobile-marketing",
+          "title": "Mobile marketing",
+          "description": "Playlist dédiée au marketing mobile.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Mobile+Marketing",
+          "youtubePlaylistId": "PLJaM5P-THN_bYM4tJbz-hGmK8Q0KgJisD"
         }
       ]
     },
     {
-      "id": "web-dev",
-      "title": "Développement Web",
-      "description": "HTML, CSS, et bonnes pratiques",
+      "id": "gestion-projet",
+      "title": "Gestion de projet",
+      "description": "Méthodologies et outils de gestion de projet.",
       "playlists": [
         {
-          "id": "html-css",
-          "title": "HTML & CSS pour tous",
-          "description": "Structure et style du web",
-          "thumbnail": "https://img.youtube.com/vi/kUMe1FH4CHE/mqdefault.jpg",
-          "videos": [
-            {
-              "id": "kUMe1FH4CHE",
-              "title": "HTML Full Course",
-              "duration": "4:00:00"
-            },
-            {
-              "id": "OXGznpKZ_sA",
-              "title": "CSS Full Course",
-              "duration": "11:00:00"
-            },
-            {
-              "id": "1Rs2ND1ryYc",
-              "title": "CSS Flexbox en 20 minutes",
-              "duration": "20:00"
-            }
-          ]
-        },
-        {
-          "id": "tailwind",
-          "title": "Tailwind CSS",
-          "description": "Utility-first CSS",
-          "thumbnail": "https://img.youtube.com/vi/ft30zcMlFaI/mqdefault.jpg",
-          "videos": [
-            {
-              "id": "ft30zcMlFaI",
-              "title": "Tailwind CSS - Full Course",
-              "duration": "3:46:00"
-            },
-            {
-              "id": "mO15qS9bNo0",
-              "title": "Tailwind en 100 secondes",
-              "duration": "1:40"
-            }
-          ]
+          "id": "gestion-projet",
+          "title": "Gestion de projet",
+          "description": "Cours et bonnes pratiques en gestion de projet.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Gestion+Projet",
+          "youtubePlaylistId": "PLJaM5P-THN_alDKu52vq_kJGPOLqhJk4K"
         }
       ]
     },
     {
-      "id": "next",
-      "title": "Next.js",
-      "description": "React et full-stack avec Next.js",
+      "id": "design",
+      "title": "Design",
+      "description": "Outils et bases du design interface.",
       "playlists": [
         {
-          "id": "nextjs-full",
-          "title": "Next.js 14 - Tutoriel complet",
-          "description": "App Router, Server Components, API",
-          "thumbnail": "https://img.youtube.com/vi/wm5gMKuwSYk/mqdefault.jpg",
-          "videos": [
-            {
-              "id": "wm5gMKuwSYk",
-              "title": "Next.js 14 Full Course",
-              "duration": "6:30:00"
-            },
-            {
-              "id": "V0eK0bwvZ_c",
-              "title": "Next.js App Router - Débutant",
-              "duration": "2:00:00"
-            }
-          ]
+          "id": "bases-figma",
+          "title": "Bases Figma",
+          "description": "Apprendre Figma pour le design d’interfaces.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Bases+Figma",
+          "youtubePlaylistId": "PLJaM5P-THN_YP5XOCThRqZRPNA_Ng-BHT"
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "DevOps & conteneurs",
+      "description": "Docker, Ansible, Podman et automatisation.",
+      "playlists": [
+        {
+          "id": "docker-ansible-2025",
+          "title": "Docker Ansible 2025",
+          "description": "Docker et Ansible — mise à jour 2025.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Docker+Ansible",
+          "youtubePlaylistId": "PLJaM5P-THN_as1_DwGQjZfzwNeQjF-BQT"
+        },
+        {
+          "id": "podman",
+          "title": "Podman",
+          "description": "Découverte et utilisation de Podman.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Podman",
+          "youtubePlaylistId": "PLJaM5P-THN_bXWrEfA79_XqJOjiK0GZDa"
+        }
+      ]
+    },
+    {
+      "id": "frontend",
+      "title": "Frontend & mobile",
+      "description": "Angular, React Native et frameworks modernes.",
+      "playlists": [
+        {
+          "id": "angular-18-19",
+          "title": "Angular 18/19",
+          "description": "Angular 18 et 19 — dernières versions.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Angular+18%2F19",
+          "youtubePlaylistId": "PLJaM5P-THN_ayH2lI8HS0byfLMB1Kt0So"
+        },
+        {
+          "id": "angular-17",
+          "title": "Angular 17",
+          "description": "Formation Angular 17.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Angular+17",
+          "youtubePlaylistId": "PLJaM5P-THN_bDgeobEG-gdp2SI0xxk9XT"
+        },
+        {
+          "id": "react-native",
+          "title": "React Native",
+          "description": "Développement d’applications mobiles avec React Native.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=React+Native",
+          "youtubePlaylistId": "PLJaM5P-THN_aYtKGHA7s-kJEio0g9nBZj"
+        }
+      ]
+    },
+    {
+      "id": "bases-donnees",
+      "title": "Bases de données",
+      "description": "MySQL et bases de données relationnelles.",
+      "playlists": [
+        {
+          "id": "mysql",
+          "title": "MySQL",
+          "description": "Cours MySQL — requêtes et administration.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=MySQL",
+          "youtubePlaylistId": "PLJaM5P-THN_bR040LBcKzfG9jCfqowdnf"
+        }
+      ]
+    },
+    {
+      "id": "programmation",
+      "title": "Programmation",
+      "description": "Initiation et bases de la programmation.",
+      "playlists": [
+        {
+          "id": "javascript-initiation",
+          "title": "JavaScript initiation",
+          "description": "Découverte du JavaScript pour débutants.",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=JS+Initiation",
+          "youtubePlaylistId": "PLJaM5P-THN_YL4c8nQUG21jfIehwsC2Mb"
         }
       ]
     }

@@ -90,7 +90,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent className="pt-0">
                       <Link
-                        href={`/watch?list=${playlist.id}&v=${playlist.videos[0]?.id ?? ""}`}
+                        href={`/watch?list=${playlist.id}`}
                       >
                         <Button className="w-full gap-2" size="sm">
                           <PlayIcon className="size-4" />
