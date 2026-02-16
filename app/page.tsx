@@ -108,14 +108,9 @@ export default function Home() {
 
       <footer className="border-t border-border/40 bg-background/50 backdrop-blur-sm mt-auto">
         <div className="mx-auto max-w-6xl px-4 sm:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-sm text-muted-foreground font-medium">
-              Arthema — Ressources de cours
-            </p>
-            <p className="text-xs text-muted-foreground/80">
-              Données dans <code className="rounded bg-muted px-1">data/resources.json</code>
-            </p>
-          </div>
+          <p className="text-sm text-muted-foreground font-medium">
+            Arthema — Ressources de cours
+          </p>
         </div>
       </footer>
     </div>
