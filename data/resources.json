@@ -1,0 +1,130 @@
+{
+  "categories": [
+    {
+      "id": "javascript",
+      "title": "JavaScript & TypeScript",
+      "description": "Fondamentaux et frameworks JS/TS",
+      "playlists": [
+        {
+          "id": "js-basics",
+          "title": "JavaScript pour débutants",
+          "description": "Apprendre les bases du JavaScript",
+          "thumbnail": "https://img.youtube.com/vi/W6NZfCO5SIk/mqdefault.jpg",
+          "videos": [
+            {
+              "id": "W6NZfCO5SIk",
+              "title": "JavaScript Tutorial for Beginners",
+              "duration": "1:18:00"
+            },
+            {
+              "id": "PkZNo7MFNFg",
+              "title": "Learn JavaScript - Full Course for Beginners",
+              "duration": "3:26:00"
+            },
+            {
+              "id": "hdI2bqOjy3c",
+              "title": "JavaScript Crash Course",
+              "duration": "1:40:00"
+            }
+          ]
+        },
+        {
+          "id": "react-playlist",
+          "title": "React - Le guide complet",
+          "description": "React de A à Z",
+          "thumbnail": "https://img.youtube.com/vi/SqcY0GlETUg/mqdefault.jpg",
+          "videos": [
+            {
+              "id": "SqcY0GlETUg",
+              "title": "React en 100 secondes",
+              "duration": "1:40"
+            },
+            {
+              "id": "Tn6-PIqc4UM",
+              "title": "React - Full Course for Beginners",
+              "duration": "6:23:00"
+            },
+            {
+              "id": "Rh3tobg7hEo",
+              "title": "React Hooks - Comprendre useState et useEffect",
+              "duration": "18:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "web-dev",
+      "title": "Développement Web",
+      "description": "HTML, CSS, et bonnes pratiques",
+      "playlists": [
+        {
+          "id": "html-css",
+          "title": "HTML & CSS pour tous",
+          "description": "Structure et style du web",
+          "thumbnail": "https://img.youtube.com/vi/kUMe1FH4CHE/mqdefault.jpg",
+          "videos": [
+            {
+              "id": "kUMe1FH4CHE",
+              "title": "HTML Full Course",
+              "duration": "4:00:00"
+            },
+            {
+              "id": "OXGznpKZ_sA",
+              "title": "CSS Full Course",
+              "duration": "11:00:00"
+            },
+            {
+              "id": "1Rs2ND1ryYc",
+              "title": "CSS Flexbox en 20 minutes",
+              "duration": "20:00"
+            }
+          ]
+        },
+        {
+          "id": "tailwind",
+          "title": "Tailwind CSS",
+          "description": "Utility-first CSS",
+          "thumbnail": "https://img.youtube.com/vi/ft30zcMlFaI/mqdefault.jpg",
+          "videos": [
+            {
+              "id": "ft30zcMlFaI",
+              "title": "Tailwind CSS - Full Course",
+              "duration": "3:46:00"
+            },
+            {
+              "id": "mO15qS9bNo0",
+              "title": "Tailwind en 100 secondes",
+              "duration": "1:40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "title": "Next.js",
+      "description": "React et full-stack avec Next.js",
+      "playlists": [
+        {
+          "id": "nextjs-full",
+          "title": "Next.js 14 - Tutoriel complet",
+          "description": "App Router, Server Components, API",
+          "thumbnail": "https://img.youtube.com/vi/wm5gMKuwSYk/mqdefault.jpg",
+          "videos": [
+            {
+              "id": "wm5gMKuwSYk",
+              "title": "Next.js 14 Full Course",
+              "duration": "6:30:00"
+            },
+            {
+              "id": "V0eK0bwvZ_c",
+              "title": "Next.js App Router - Débutant",
+              "duration": "2:00:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
