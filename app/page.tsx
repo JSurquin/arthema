@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { BookOpenIcon } from "lucide-react";
-import { getResources } from "@/lib/resources";
+import { getCategoriesWithThumbnails } from "@/lib/enrich-resources";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { PlaylistCard } from "@/components/playlist-card";
+import { HomeResources } from "@/components/home-resources";
+import { SiteFooter } from "@/components/site-footer";
 
-export default function Home() {
-  const { categories } = getResources();
+export default async function Home() {
+  const categories = await getCategoriesWithThumbnails();
 
   return (
-    <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden bg-gradient-to-b from-background via-background to-primary/5">
+    <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden">
       {/* Header */}
-      <header className="border-b border-border/40 bg-background/80 backdrop-blur-xl shrink-0 sticky top-0 z-50">
-        <div className="mx-auto max-w-6xl flex items-center justify-between gap-3 px-4 sm:px-8 py-4 min-w-0">
+      <header className="border-b border-border/40 bg-background/85 backdrop-blur-xl shrink-0 sticky top-0 z-50 supports-[backdrop-filter]:bg-background/70">
+        <div className="mx-auto max-w-7xl flex items-center justify-between gap-3 px-3 sm:px-5 py-3.5 sm:py-4 min-w-0">
           <Link
             href="/"
             className="flex items-center gap-3 hover:opacity-90 transition-opacity group"
@@ -32,53 +33,27 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex-1 mx-auto max-w-6xl w-full px-4 sm:px-8 py-12 sm:py-20">
-        {/* Hero — style Andromed */}
-        <section className="text-center space-y-6 mb-16 sm:mb-24">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary mb-2">
+      <main className="flex-1 mx-auto max-w-7xl w-full px-3 sm:px-5 lg:px-6 py-9 sm:py-12">
+        {/* Hero */}
+        <section className="text-center space-y-5 sm:space-y-6 mb-8 sm:mb-10 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/[0.08] px-4 py-1.5 text-xs font-medium text-primary">
             <span className="size-2 rounded-full bg-primary animate-pulse" />
-            Récapitulatif des ressources
+            Ressources de formation
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-balance">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance">
             Vos ressources de cours{" "}
             <span className="text-primary">centralisées</span>
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed text-pretty">
-            Vidéos et playlists YouTube pour apprendre. Cliquez pour lire sur le
-            site ou ouvrir sur YouTube.
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty">
+            Vidéos et playlists YouTube pour réviser et aller plus loin — lecture
+            sur Arthema ou ouverture directe sur YouTube.
           </p>
         </section>
 
-        {/* Catégories */}
-        <section className="space-y-16">
-          {categories.map((category) => (
-            <div key={category.id} className="space-y-8">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">
-                  {category.title}
-                </h2>
-                <p className="text-muted-foreground max-w-2xl">
-                  {category.description}
-                </p>
-              </div>
-
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {category.playlists.map((playlist) => (
-                  <PlaylistCard key={playlist.id} playlist={playlist} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </section>
+        <HomeResources categories={categories} />
       </main>
 
-      <footer className="border-t border-border/40 bg-background/50 backdrop-blur-sm mt-auto">
-        <div className="mx-auto max-w-6xl px-4 sm:px-8 py-6">
-          <p className="text-sm text-muted-foreground font-medium">
-            Arthema — Ressources de cours
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

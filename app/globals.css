@@ -50,7 +50,8 @@
 /* Thème clair (par défaut quand class="light" ou pas de class) */
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.985 0 0);
+  /* Légèrement teinté (plus « papier pro » que blanc pur) */
+  --background: oklch(0.978 0.008 268);
   --foreground: oklch(0.15 0.02 270);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.02 270);
@@ -115,6 +116,190 @@
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.22 0.02 270);
   --sidebar-ring: oklch(0.72 0.18 250);
+}
+
+/* Fond global : glows + calques animés (légers) + grille */
+.app-surface {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(
+      ellipse 140% 95% at 50% -48%,
+      color-mix(in oklch, var(--primary) 38%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 100% 8%,
+      color-mix(in oklch, var(--primary) 22%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse 85% 65% at -5% 95%,
+      color-mix(in oklch, var(--chart-2) 18%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 85% 88%,
+      color-mix(in oklch, var(--chart-4) 14%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 20% 35%,
+      color-mix(in oklch, var(--chart-3) 8%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--foreground) 3.5%, transparent) 0%,
+      transparent 35%,
+      color-mix(in oklch, var(--foreground) 2.2%, transparent) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23000000' fill-opacity='0.035'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, auto, auto, auto, 36px 36px;
+}
+
+.app-surface::before,
+.app-surface::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: auto;
+  border-radius: 50%;
+  mix-blend-mode: normal;
+}
+
+/* Halo principal haut — respiration très lente */
+.app-surface::before {
+  width: min(120vw, 72rem);
+  height: min(75vh, 38rem);
+  left: 50%;
+  top: -18%;
+  transform: translateX(-50%);
+  transform-origin: center top;
+  background: radial-gradient(
+    ellipse 55% 48% at 50% 40%,
+    color-mix(in oklch, var(--primary) 55%, transparent),
+    transparent 72%
+  );
+  opacity: 0.72;
+  animation: app-glow-breathe 18s ease-in-out infinite alternate;
+}
+
+/* Second halo bas / côté — phase décalée */
+.app-surface::after {
+  width: min(100vw, 56rem);
+  height: min(60vh, 32rem);
+  right: -12%;
+  bottom: -8%;
+  transform-origin: center center;
+  background: radial-gradient(
+    ellipse 50% 45% at 50% 50%,
+    color-mix(in oklch, var(--chart-2) 40%, transparent),
+    transparent 70%
+  );
+  opacity: 0.5;
+  animation: app-glow-breathe-after 22s ease-in-out infinite alternate;
+  animation-delay: -9s;
+}
+
+@keyframes app-glow-breathe {
+  from {
+    opacity: 0.38;
+    transform: translateX(-50%) scale(0.96);
+  }
+  to {
+    opacity: 0.88;
+    transform: translateX(-50%) scale(1.05);
+  }
+}
+
+@keyframes app-glow-breathe-after {
+  from {
+    opacity: 0.28;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 0.72;
+    transform: scale(1.06);
+  }
+}
+
+.dark .app-surface {
+  background-image:
+    radial-gradient(
+      ellipse 125% 88% at 50% -42%,
+      color-mix(in oklch, var(--primary) 48%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 85% 68% at 102% 6%,
+      color-mix(in oklch, var(--primary) 28%, transparent),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 80% 62% at -4% 96%,
+      color-mix(in oklch, var(--chart-3) 22%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse 50% 42% at 88% 86%,
+      color-mix(in oklch, var(--chart-4) 18%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse 65% 48% at 18% 32%,
+      color-mix(in oklch, var(--chart-5) 12%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--foreground) 6%, transparent) 0%,
+      transparent 38%,
+      color-mix(in oklch, var(--foreground) 7%, transparent) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23ffffff' fill-opacity='0.055'/%3E%3C/svg%3E");
+}
+
+.dark .app-surface::before {
+  background: radial-gradient(
+    ellipse 52% 46% at 50% 38%,
+    color-mix(in oklch, var(--primary) 62%, transparent),
+    transparent 70%
+  );
+  opacity: 0.55;
+}
+
+.dark .app-surface::after {
+  background: radial-gradient(
+    ellipse 48% 44% at 50% 50%,
+    color-mix(in oklch, var(--chart-3) 48%, transparent),
+    transparent 68%
+  );
+  opacity: 0.42;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-surface::before,
+  .app-surface::after {
+    animation: none;
+    opacity: 0.55;
+  }
+  .app-surface::before {
+    transform: translateX(-50%) scale(1);
+  }
+  .app-surface::after {
+    transform: scale(1);
+  }
+  .dark .app-surface::before {
+    opacity: 0.45;
+  }
+  .dark .app-surface::after {
+    opacity: 0.35;
+  }
 }
 
 @layer base {

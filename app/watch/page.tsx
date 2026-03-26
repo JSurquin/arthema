@@ -39,7 +39,7 @@ export default async function WatchPage({
     const externalUrl = getPlaylistExternalUrl(playlist.youtubePlaylistId);
 
     return (
-      <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden bg-background">
+      <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden">
         <header className="border-b border-border/40 bg-background/90 backdrop-blur-xl shrink-0 sticky top-0 z-50">
           <div className="mx-auto max-w-6xl flex items-center justify-between gap-3 px-4 sm:px-8 py-4 min-w-0">
             <Link
@@ -88,7 +88,7 @@ export default async function WatchPage({
   const externalUrl = getVideoUrl(video.id);
 
   return (
-    <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden bg-background">
+    <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden">
       <header className="border-b border-border/40 bg-background/90 backdrop-blur-xl shrink-0 sticky top-0 z-50">
         <div className="mx-auto max-w-6xl flex items-center justify-between gap-3 px-4 sm:px-8 py-4 min-w-0">
           <Link

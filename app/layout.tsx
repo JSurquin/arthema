@@ -31,7 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          {children}
+          <div className="relative min-h-dvh">
+            <div className="app-surface" aria-hidden />
+            {children}
+          </div>
           <Toaster />
         </Providers>
       </body>
