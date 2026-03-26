@@ -1,15 +1,8 @@
 import Link from "next/link";
-import { BookOpenIcon, PlayIcon } from "lucide-react";
+import { BookOpenIcon } from "lucide-react";
 import { getResources } from "@/lib/resources";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { PlaylistCard } from "@/components/playlist-card";
 
 export default function Home() {
   const { categories } = getResources();
@@ -71,36 +64,7 @@ export default function Home() {
 
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {category.playlists.map((playlist) => (
-                  <Card
-                    key={playlist.id}
-                    className="group overflow-hidden border-border/60 bg-card/60 backdrop-blur-sm hover:border-primary/30 hover:bg-card/80 transition-all duration-300"
-                  >
-                    <CardHeader className="pb-2">
-                      <div className="aspect-video rounded-lg overflow-hidden bg-muted mb-2 ring-1 ring-border/50">
-                        <img
-                          src={playlist.thumbnail}
-                          alt=""
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <CardTitle className="text-lg line-clamp-2">
-                        {playlist.title}
-                      </CardTitle>
-                      <CardDescription className="line-clamp-2">
-                        {playlist.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <Link
-                        href={`/watch?list=${playlist.id}`}
-                      >
-                        <Button className="w-full gap-2" size="sm">
-                          <PlayIcon className="size-4" />
-                          Voir la playlist
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
+                  <PlaylistCard key={playlist.id} playlist={playlist} />
                 ))}
               </div>
             </div>
