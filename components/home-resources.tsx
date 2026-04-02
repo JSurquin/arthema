@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { SearchIcon } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { HeartIcon, SearchIcon } from "lucide-react";
 import { PlaylistCardStatic } from "@/components/playlist-card-static";
+import { Button } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
@@ -19,12 +20,33 @@ function normalize(s: string) {
 
 export function HomeResources({ categories }: { categories: CategoryWithThumbs[] }) {
   const [query, setQuery] = useState("");
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("arthema:favorites");
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as string[];
+      if (Array.isArray(parsed)) setFavoriteIds(parsed);
+    } catch {
+      // ignore invalid localStorage content
+    }
+  }, []);
+
+  function toggleFavorite(playlistId: string) {
+    setFavoriteIds((prev) => {
+      const next = prev.includes(playlistId)
+        ? prev.filter((id) => id !== playlistId)
+        : [...prev, playlistId];
+      localStorage.setItem("arthema:favorites", JSON.stringify(next));
+      return next;
+    });
+  }
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim());
-    if (!q) return categories;
-
-    return categories
+    const base = (q ? categories
       .map((cat) => {
         const catHaystack = normalize(`${cat.title} ${cat.description}`);
         const playlists = cat.playlists.filter((p) => {
@@ -35,15 +57,25 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
         });
         return { ...cat, playlists };
       })
+      .filter((c) => c.playlists.length > 0) : categories);
+
+    if (!favoritesOnly) return base;
+
+    return base
+      .map((cat) => ({
+        ...cat,
+        playlists: cat.playlists.filter((p) => favoriteIds.includes(p.id)),
+      }))
       .filter((c) => c.playlists.length > 0);
-  }, [categories, query]);
+  }, [categories, query, favoritesOnly, favoriteIds]);
 
   const totalVisible = filtered.reduce((n, c) => n + c.playlists.length, 0);
   const totalAll = categories.reduce((n, c) => n + c.playlists.length, 0);
+  const totalFavorites = favoriteIds.length;
 
   return (
     <>
-      <div className="mx-auto max-w-2xl w-full mb-10 sm:mb-12">
+      <div className="mx-auto max-w-2xl w-full mb-10 sm:mb-12 space-y-3">
         <label htmlFor="resource-search" className="sr-only">
           Rechercher une playlist ou un thème
         </label>
@@ -61,6 +93,21 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
             autoComplete="off"
           />
         </InputGroup>
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-sm text-muted-foreground">
+            {totalVisible} visible{totalVisible > 1 ? "s" : ""} sur {totalAll}
+          </p>
+          <Button
+            type="button"
+            size="sm"
+            variant={favoritesOnly ? "default" : "outline"}
+            onClick={() => setFavoritesOnly((v) => !v)}
+            className="gap-1.5"
+          >
+            <HeartIcon className={`size-4 ${favoritesOnly ? "fill-current" : ""}`} />
+            Favoris ({totalFavorites})
+          </Button>
+        </div>
         {query.trim() && totalVisible > 0 && (
           <p className="mt-2 text-sm text-muted-foreground text-center sm:text-left">
             {totalVisible} résultat{totalVisible > 1 ? "s" : ""} sur {totalAll}
@@ -92,6 +139,8 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
                     key={playlist.id}
                     playlist={playlist}
                     thumbnailUrl={playlist.resolvedThumbnail}
+                    isFavorite={favoriteIds.includes(playlist.id)}
+                    onToggleFavorite={toggleFavorite}
                   />
                 ))}
               </div>

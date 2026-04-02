@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { PlayIcon } from "lucide-react";
+import { HeartIcon, PlayIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,20 +15,34 @@ import type { PlaylistResource } from "@/lib/types";
 export function PlaylistCardStatic({
   playlist,
   thumbnailUrl,
+  isFavorite = false,
+  onToggleFavorite,
 }: {
   playlist: PlaylistResource;
   thumbnailUrl: string;
+  isFavorite?: boolean;
+  onToggleFavorite?: (playlistId: string) => void;
 }) {
   return (
     <Card className="group h-full overflow-hidden border-border/60 bg-card/60 backdrop-blur-sm py-5 gap-5 rounded-2xl hover:border-primary/35 hover:bg-card/85 hover:shadow-md transition-all duration-300">
       <CardHeader className="px-5 pb-0 gap-2.5">
-        <div className="aspect-video rounded-xl overflow-hidden bg-muted ring-1 ring-border/50 shadow-sm">
+        <div className="relative aspect-video rounded-xl overflow-hidden bg-muted ring-1 ring-border/50 shadow-sm">
           <img
             src={thumbnailUrl}
             alt={playlist.title}
             className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
             loading="lazy"
           />
+          <Button
+            type="button"
+            size="icon-sm"
+            variant="secondary"
+            className="absolute top-2 right-2 backdrop-blur-sm bg-background/70 hover:bg-background"
+            onClick={() => onToggleFavorite?.(playlist.id)}
+            aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+          >
+            <HeartIcon className={`size-4 ${isFavorite ? "fill-current text-primary" : ""}`} />
+          </Button>
         </div>
         <CardTitle className="text-xl font-semibold tracking-tight line-clamp-2 pt-1">
           {playlist.title}
