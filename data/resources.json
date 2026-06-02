@@ -118,6 +118,20 @@
           "youtubePlaylistId": "PLJaM5P-THN_YL4c8nQUG21jfIehwsC2Mb"
         }
       ]
+    },
+    {
+      "id": "laravel",
+      "title": "Laravel",
+      "description": "PHP et le framework Laravel, du niveau intermédiaire à avancé.",
+      "playlists": [
+        {
+          "id": "laravel-avancee",
+          "title": "LARAVEL (avancée)",
+          "description": "Formation Laravel niveau avancé (LV2).",
+          "thumbnail": "https://placehold.co/320x180/1e293b/64748b?text=Laravel+Avanc%C3%A9e",
+          "youtubePlaylistId": "PLJaM5P-THN_Yr-WAZsNuCnPpSRIYz7SyB"
+        }
+      ]
     }
   ]
 }
