@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arthema — Ressources de cours",
+  title: "Andromed Ressources — Ressources de cours",
   description:
     "Récapitulatif des ressources de cours. Vidéos et playlists YouTube pour apprendre.",
 };

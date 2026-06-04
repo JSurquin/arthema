@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           <div className="space-y-3">
             <p className="text-sm font-semibold tracking-tight text-foreground">
-              Arthema
+              Andromed Ressources
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               Recueil de playlists et vidéos YouTube pour suivre les cours et
@@ -82,7 +82,7 @@ export function SiteFooter() {
         <div className="mt-10 pt-8 border-t border-border/40 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-muted-foreground">
           <span>© {new Date().getFullYear()} Andromed. Tous droits réservés.</span>
           <span className="sm:text-right">
-            Arthema — ressources pédagogiques
+            Andromed Ressources — ressources pédagogiques
           </span>
         </div>
       </div>

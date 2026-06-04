@@ -22,7 +22,7 @@ export default async function Home() {
             </div>
             <div>
               <span className="text-xl font-bold tracking-tight text-foreground">
-                Arthema
+                Andromed Ressources
               </span>
               <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest -mt-0.5">
                 Ressources de cours
@@ -46,7 +46,7 @@ export default async function Home() {
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty">
             Vidéos et playlists YouTube pour réviser et aller plus loin — lecture
-            sur Arthema ou ouverture directe sur YouTube.
+            ici ou ouverture directe sur YouTube.
           </p>
         </section>
 

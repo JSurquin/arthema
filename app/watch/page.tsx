@@ -49,7 +49,7 @@ export default async function WatchPage({
               <div className="size-10 rounded-xl bg-primary/20 flex items-center justify-center ring-1 ring-primary/30">
                 <BookOpenIcon className="size-5 text-primary" />
               </div>
-              <span className="text-xl font-bold tracking-tight">Arthema</span>
+              <span className="text-xl font-bold tracking-tight">Andromed Ressources</span>
             </Link>
             <ThemeToggle />
           </div>
@@ -98,7 +98,7 @@ export default async function WatchPage({
             <div className="size-10 rounded-xl bg-primary/20 flex items-center justify-center ring-1 ring-primary/30">
               <BookOpenIcon className="size-5 text-primary" />
             </div>
-            <span className="text-xl font-bold tracking-tight">Arthema</span>
+            <span className="text-xl font-bold tracking-tight">Andromed Ressources</span>
           </Link>
             <ThemeToggle />
         </div>
