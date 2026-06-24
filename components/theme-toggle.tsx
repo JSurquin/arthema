@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocaleContext } from "@/lib/i18n/context";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const { t } = useLocaleContext();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "Passer en mode clair" : "Passer en mode sombre"}
+      aria-label={isDark ? t.theme.light : t.theme.dark}
     >
       {isDark ? (
         <SunIcon className="size-5" />

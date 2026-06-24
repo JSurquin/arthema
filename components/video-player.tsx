@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ExternalLinkIcon } from "lucide-react";
+import { useLocaleContext } from "@/lib/i18n/context";
 
 interface VideoPlayerProps {
   embedUrl: string;
@@ -10,6 +11,8 @@ interface VideoPlayerProps {
 }
 
 export function VideoPlayer({ embedUrl, externalUrl, title }: VideoPlayerProps) {
+  const { t } = useLocaleContext();
+
   return (
     <div className="space-y-3">
       <div className="aspect-video w-full overflow-hidden rounded-xl bg-black ring-1 ring-border/50">
@@ -30,7 +33,7 @@ export function VideoPlayer({ embedUrl, externalUrl, title }: VideoPlayerProps) 
             className="gap-2"
           >
             <ExternalLinkIcon className="size-4" />
-            Ouvrir sur YouTube
+            {t.watch.openYoutube}
           </a>
         </Button>
       </div>

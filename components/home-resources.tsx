@@ -9,6 +9,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { useLocaleContext } from "@/lib/i18n/context";
 import type { CategoryWithThumbs } from "@/lib/enrich-resources";
 
 function normalize(s: string) {
@@ -19,6 +20,7 @@ function normalize(s: string) {
 }
 
 export function HomeResources({ categories }: { categories: CategoryWithThumbs[] }) {
+  const { t, format } = useLocaleContext();
   const [query, setQuery] = useState("");
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
@@ -77,7 +79,7 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
     <>
       <div className="mx-auto max-w-2xl w-full mb-10 sm:mb-12 space-y-3">
         <label htmlFor="resource-search" className="sr-only">
-          Rechercher une playlist ou un thème
+          {t.resources.searchLabel}
         </label>
         <InputGroup className="h-11 sm:h-12 rounded-xl border-border/60 bg-background/80 shadow-sm">
           <InputGroupAddon align="inline-start" className="pl-3.5">
@@ -86,7 +88,7 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
           <InputGroupInput
             id="resource-search"
             type="search"
-            placeholder="Rechercher par titre, thème, mot-clé…"
+            placeholder={t.resources.searchPlaceholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="h-11 sm:h-12 text-base sm:text-sm placeholder:text-muted-foreground/70"
@@ -95,7 +97,11 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
         </InputGroup>
         <div className="flex items-center justify-between gap-2">
           <p className="text-sm text-muted-foreground">
-            {totalVisible} visible{totalVisible > 1 ? "s" : ""} sur {totalAll}
+            {format(t.resources.visibleCount, {
+              visible: String(totalVisible),
+              total: String(totalAll),
+              plural: totalVisible > 1 ? "s" : "",
+            })}
           </p>
           <Button
             type="button"
@@ -105,12 +111,16 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
             className="gap-1.5"
           >
             <HeartIcon className={`size-4 ${favoritesOnly ? "fill-current" : ""}`} />
-            Favoris ({totalFavorites})
+            {format(t.resources.favorites, { count: String(totalFavorites) })}
           </Button>
         </div>
         {query.trim() && totalVisible > 0 && (
           <p className="mt-2 text-sm text-muted-foreground text-center sm:text-left">
-            {totalVisible} résultat{totalVisible > 1 ? "s" : ""} sur {totalAll}
+            {format(t.resources.resultsCount, {
+              count: String(totalVisible),
+              total: String(totalAll),
+              plural: totalVisible > 1 ? "s" : "",
+            })}
           </p>
         )}
       </div>
@@ -118,8 +128,7 @@ export function HomeResources({ categories }: { categories: CategoryWithThumbs[]
       <section className="space-y-12 sm:space-y-14">
         {filtered.length === 0 ? (
           <p className="text-center text-muted-foreground py-12 text-base">
-            Aucune playlist ne correspond à « {query.trim()} ». Essayez un autre
-            mot-clé ou effacez la recherche.
+            {format(t.resources.noResults, { query: query.trim() })}
           </p>
         ) : (
           filtered.map((category) => (

@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useLocaleContext } from "@/lib/i18n/context";
 import type { PlaylistResource } from "@/lib/types";
 
 export function PlaylistCardStatic({
@@ -23,6 +24,8 @@ export function PlaylistCardStatic({
   isFavorite?: boolean;
   onToggleFavorite?: (playlistId: string) => void;
 }) {
+  const { t } = useLocaleContext();
+
   return (
     <Card className="group h-full overflow-hidden border-border/60 bg-card/60 backdrop-blur-sm py-5 gap-5 rounded-2xl hover:border-primary/35 hover:bg-card/85 hover:shadow-md transition-all duration-300">
       <CardHeader className="px-5 pb-0 gap-2.5">
@@ -39,7 +42,7 @@ export function PlaylistCardStatic({
             variant="secondary"
             className="absolute top-2 right-2 backdrop-blur-sm bg-background/70 hover:bg-background"
             onClick={() => onToggleFavorite?.(playlist.id)}
-            aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+            aria-label={isFavorite ? t.resources.removeFavorite : t.resources.addFavorite}
           >
             <HeartIcon className={`size-4 ${isFavorite ? "fill-current text-primary" : ""}`} />
           </Button>
@@ -55,7 +58,7 @@ export function PlaylistCardStatic({
         <Link href={`/watch?list=${playlist.id}`}>
           <Button className="w-full gap-2 h-10" size="default">
             <PlayIcon className="size-4" />
-            Voir la playlist
+            {t.resources.watchPlaylist}
           </Button>
         </Link>
       </CardContent>

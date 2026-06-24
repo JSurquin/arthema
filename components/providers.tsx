@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
+import { LocaleProvider } from "@/lib/i18n/context";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -10,7 +11,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       defaultTheme="dark"
       enableSystem={false}
     >
-      <TooltipProvider>{children}</TooltipProvider>
+      <LocaleProvider>
+        <TooltipProvider>{children}</TooltipProvider>
+      </LocaleProvider>
     </ThemeProvider>
   );
 }

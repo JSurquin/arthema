@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { BookOpenIcon } from "lucide-react";
 import { getResources, getPlaylistEmbedUrl, getPlaylistExternalUrl, getEmbedUrl, getVideoUrl } from "@/lib/resources";
 import { VideoPlayer } from "@/components/video-player";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { SiteHeader } from "@/components/site-header";
+import { WatchPlaylistHeading } from "@/components/watch-playlist-heading";
 
 export const dynamic = "force-dynamic";
 
@@ -33,27 +33,13 @@ export default async function WatchPage({
 
   const { category, playlist } = found;
 
-  // Playlist YouTube : embed de toute la playlist
   if (playlist.youtubePlaylistId) {
     const embedUrl = getPlaylistEmbedUrl(playlist.youtubePlaylistId);
     const externalUrl = getPlaylistExternalUrl(playlist.youtubePlaylistId);
 
     return (
       <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden">
-        <header className="border-b border-border/40 bg-background/90 backdrop-blur-xl shrink-0 sticky top-0 z-50">
-          <div className="mx-auto max-w-6xl flex items-center justify-between gap-3 px-4 sm:px-8 py-4 min-w-0">
-            <Link
-              href="/"
-              className="flex items-center gap-3 hover:opacity-90 transition-opacity"
-            >
-              <div className="size-10 rounded-xl bg-primary/20 flex items-center justify-center ring-1 ring-primary/30">
-                <BookOpenIcon className="size-5 text-primary" />
-              </div>
-              <span className="text-xl font-bold tracking-tight">Andromed Ressources</span>
-            </Link>
-            <ThemeToggle />
-          </div>
-        </header>
+        <SiteHeader compact />
 
         <main className="flex-1 mx-auto max-w-6xl w-full px-4 sm:px-8 py-6">
           <div className="space-y-4">
@@ -74,7 +60,6 @@ export default async function WatchPage({
     );
   }
 
-  // Playlist locale (liste de vidéos)
   const videos = playlist.videos ?? [];
   const video = videoId
     ? videos.find((v) => v.id === videoId) ?? videos[0]
@@ -89,20 +74,7 @@ export default async function WatchPage({
 
   return (
     <div className="min-h-screen flex flex-col min-w-0 overflow-x-hidden">
-      <header className="border-b border-border/40 bg-background/90 backdrop-blur-xl shrink-0 sticky top-0 z-50">
-        <div className="mx-auto max-w-6xl flex items-center justify-between gap-3 px-4 sm:px-8 py-4 min-w-0">
-          <Link
-            href="/"
-            className="flex items-center gap-3 hover:opacity-90 transition-opacity"
-          >
-            <div className="size-10 rounded-xl bg-primary/20 flex items-center justify-center ring-1 ring-primary/30">
-              <BookOpenIcon className="size-5 text-primary" />
-            </div>
-            <span className="text-xl font-bold tracking-tight">Andromed Ressources</span>
-          </Link>
-            <ThemeToggle />
-        </div>
-      </header>
+      <SiteHeader compact />
 
       <main className="flex-1 mx-auto max-w-6xl w-full px-4 sm:px-8 py-6">
         <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
@@ -121,9 +93,7 @@ export default async function WatchPage({
           </div>
 
           <aside className="space-y-4">
-            <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-              Playlist — {playlist.title}
-            </h2>
+            <WatchPlaylistHeading title={playlist.title} />
             <ul className="space-y-2">
               {videos.map((v) => {
                 const isActive = v.id === video.id;
