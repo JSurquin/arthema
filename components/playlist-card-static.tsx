@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { HeartIcon, PlayIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,16 +26,20 @@ export function PlaylistCardStatic({
   onToggleFavorite?: (playlistId: string) => void;
 }) {
   const { t } = useLocaleContext();
+  const [imgSrc, setImgSrc] = useState(thumbnailUrl);
 
   return (
     <Card className="group h-full overflow-hidden border-border/60 bg-card/60 backdrop-blur-sm py-5 gap-5 rounded-2xl hover:border-primary/35 hover:bg-card/85 hover:shadow-md transition-all duration-300">
       <CardHeader className="px-5 pb-0 gap-2.5">
         <div className="relative aspect-video rounded-xl overflow-hidden bg-muted ring-1 ring-border/50 shadow-sm">
           <img
-            src={thumbnailUrl}
+            src={imgSrc}
             alt={playlist.title}
             className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
             loading="lazy"
+            onError={() => {
+              if (imgSrc !== playlist.thumbnail) setImgSrc(playlist.thumbnail);
+            }}
           />
           <Button
             type="button"
